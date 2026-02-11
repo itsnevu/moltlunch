@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moltlunch | Presale Launchpad</title>
+<link rel="icon" type="image/svg+xml" href="/eye.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -658,7 +659,7 @@ footer{border-top:1px solid var(--border-dashed);margin-top:100px;position:relat
 </div>
 
 <script>
-// ─── PROJECT DATA ───
+// â”€â”€â”€ PROJECT DATA â”€â”€â”€
 const projects = [
   {
     id: 0, name: "Moltlunch Genesis", ticker: "MOLT", status: "live",
@@ -742,17 +743,17 @@ const projects = [
   }
 ];
 
-// ─── STATE ───
+// â”€â”€â”€ STATE â”€â”€â”€
 let walletConnected = false;
 let walletAddress = '';
 let currentFilter = 'all';
 
-// ─── AVATAR SVG ───
+// â”€â”€â”€ AVATAR SVG â”€â”€â”€
 function avatarSVG(color, letter) {
   return `<svg width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="${color}"/><text x="24" y="24" text-anchor="middle" dominant-baseline="central" fill="${color === '#e8e8ed' || color === '#f59e0b' || color === '#22c55e' ? '#000' : '#fff'}" font-size="17" font-weight="700" font-family="JetBrains Mono,monospace">${letter}</text></svg>`;
 }
 
-// ─── FORMAT ───
+// â”€â”€â”€ FORMAT â”€â”€â”€
 function fmtUSD(n) {
   if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
   if (n >= 1000) return '$' + n.toLocaleString('en-US', {maximumFractionDigits: 0});
@@ -769,7 +770,7 @@ function fmtCountdown(ms) {
   };
 }
 
-// ─── RENDER PROJECTS ───
+// â”€â”€â”€ RENDER PROJECTS â”€â”€â”€
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   let filtered = projects.filter(p => !p.featured);
@@ -874,7 +875,7 @@ function renderProjects() {
   });
 }
 
-// ─── FILTER ───
+// â”€â”€â”€ FILTER â”€â”€â”€
 function filterProjects(status, btn) {
   currentFilter = status;
   document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
@@ -883,9 +884,9 @@ function filterProjects(status, btn) {
 }
 function searchProjects() { renderProjects(); }
 
-// ═══════════════════════════════════
-// ─── REAL METAMASK WALLET CONNECT ──
-// ═══════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// â”€â”€â”€ REAL METAMASK WALLET CONNECT â”€â”€
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function openWalletModal() {
   if (walletConnected) {
     if (confirm('Disconnect wallet ' + walletAddress.slice(0,6) + '...' + walletAddress.slice(-4) + '?')) {
@@ -967,7 +968,7 @@ if (typeof window.ethereum !== 'undefined') {
   });
 }
 
-// ─── BUY ───
+// â”€â”€â”€ BUY â”€â”€â”€
 function handleBuy(name, ticker) {
   if (!walletConnected) { openWalletModal(); return; }
   const project = projects.find(p => p.ticker === ticker);
@@ -1044,7 +1045,7 @@ function updateFeaturedDisplay() {
   document.getElementById('featuredBar').style.width = pct + '%';
 }
 
-// ─── TOAST ───
+// â”€â”€â”€ TOAST â”€â”€â”€
 function showToast(icon, text) {
   const toast = document.getElementById('toast');
   document.getElementById('toastIcon').innerHTML = icon;
@@ -1054,7 +1055,7 @@ function showToast(icon, text) {
   toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
 }
 
-// ─── COUNTDOWN ───
+// â”€â”€â”€ COUNTDOWN â”€â”€â”€
 function updateCountdowns() {
   const fp = projects.find(p => p.featured);
   if (fp) {
@@ -1072,7 +1073,7 @@ function updateCountdowns() {
   });
 }
 
-// ─── SCROLL ANIMS ───
+// â”€â”€â”€ SCROLL ANIMS â”€â”€â”€
 function initScrollAnimations() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1085,7 +1086,7 @@ function toggleMobileMenu() { document.getElementById('mobileMenu').classList.to
 document.getElementById('walletModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeWalletModal(); });
 document.getElementById('buyConfirmModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeBuyModal(); });
 
-// ─── SIMULATE LIVE DATA ───
+// â”€â”€â”€ SIMULATE LIVE DATA â”€â”€â”€
 function simulateLiveUpdates() {
   projects.forEach(p => {
     if (p.status === 'live' && p.raised < p.target) {
@@ -1105,7 +1106,7 @@ function simulateLiveUpdates() {
   document.getElementById('statComingSoon').textContent = projects.filter(p => p.status === 'coming_soon').length;
 }
 
-// ─── INIT ───
+// â”€â”€â”€ INIT â”€â”€â”€
 renderProjects();
 initScrollAnimations();
 setInterval(updateCountdowns, 1000);
@@ -1115,3 +1116,4 @@ requestAnimationFrame(() => { document.querySelector('.hero').classList.add('vis
 </script>
 </body>
 </html>
+
