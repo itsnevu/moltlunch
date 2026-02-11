@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moltlunch | Presale Launchpad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d17;
+  --bg-card:rgba(255,255,255,0.02);
+  --bg-card-hover:rgba(255,255,255,0.04);
+  --bg-elevated:rgba(255,255,255,0.03);
+  --bg-input:#0a0a12;
+  --text:#fff;
+  --text-secondary:#8888a0;
+  --text-muted:#4e4e6a;
+  --pink:#ffccfc;
+  --blue:#012eed;
+  --accent-soft:rgba(255,204,252,0.1);
+  --primary:#fff;
+  --primary-dim:#666;
+  --green:#22c55e;
+  --green-bg:rgba(34,197,94,0.08);
+  --yellow:#eab308;
+  --red:#ff4949;
+  --border:rgba(255,255,255,0.08);
+  --border-dashed:#14142a;
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+  --radius:12px;
+  --radius-sm:10px;
+  --radius-xs:8px;
+  --transition:0.2s ease;
+  --font-serif:'DM Serif Display',Georgia,serif;
+  --font-sans:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--blue);color:#fff}
+
+/* === NAVBAR === */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,23,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dashed)}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-serif);font-size:1.3rem;letter-spacing:-0.3px;color:var(--text)}
+.logo svg{height:28px;width:auto}
+.logo-icon{width:34px;height:34px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#fff;font-family:var(--font-sans)}
+
+/* === PARTNER BADGE === */
+.partner-strip{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:0;margin-bottom:36px;opacity:.7;transition:opacity .3s}
+.partner-strip:hover{opacity:1}
+.partner-strip .x-mark{font-size:1.1rem;color:var(--text-muted);font-weight:300}
+.partner-strip .bankr-logo{height:44px;width:auto;opacity:.85;transition:opacity .3s}
+.partner-strip .bankr-logo:hover{opacity:1}
+.partner-label{font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;font-family:var(--font-mono);text-align:center;margin-bottom:12px}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--text-muted);padding:8px 16px;border-radius:6px;transition:all var(--transition);letter-spacing:0.2px}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-connect{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:9px 24px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit;display:flex;align-items:center;gap:8px}
+.btn-connect:hover{background:var(--pink);color:var(--bg)}
+.btn-connect.connected{background:var(--green-bg);border:1px solid rgba(34,197,94,0.2);color:var(--green)}
+.btn-connect.connected:hover{background:rgba(34,197,94,0.12)}
+.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(13,13,23,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-dashed);padding:16px 40px;z-index:99}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 0;color:var(--text-secondary);font-size:.9rem;border-bottom:1px solid var(--border-dashed)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--pink)}
+
+/* === HERO === */
+.hero{padding:160px 40px 80px;text-align:center;position:relative;max-width:1140px;margin:0 auto;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-dashed);border-radius:100px;padding:7px 20px 7px 10px;margin-bottom:32px;font-size:.75rem;font-weight:500;color:var(--text-secondary);font-family:var(--font-mono);letter-spacing:0.5px}
+.hero-badge .dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.8rem,6vw,4.8rem);font-weight:400;letter-spacing:-1px;line-height:1.08;margin-bottom:24px;color:var(--text)}
+.hero h1 .accent{color:var(--pink);font-style:italic}
+.inline-logo{display:inline-block;height:.9em;width:auto;vertical-align:baseline;position:relative;top:-.02em;margin-left:.1em}
+.hero-sub{font-size:1rem;color:var(--text-secondary);max-width:520px;margin:0 auto 20px;line-height:1.8;font-weight:400}
+.hero-stats{display:flex;justify-content:center;gap:1px;margin-top:56px;background:var(--border-dashed);border:1px solid var(--border-dashed);border-radius:var(--radius);overflow:hidden}
+.hero-stat{text-align:center;padding:28px 40px;background:var(--bg);flex:1}
+.hero-stat .num{font-size:1.6rem;font-weight:700;color:var(--text);letter-spacing:-0.5px;font-family:var(--font-mono)}
+.hero-stat .label{font-size:.68rem;color:var(--text-muted);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;font-family:var(--font-mono)}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:14px 36px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit}
+.btn-primary:hover{background:var(--pink);color:var(--bg)}
+.btn-secondary{background:transparent;color:var(--text-secondary);border:1px solid var(--border-dashed);border-radius:8px;padding:14px 36px;font-size:.9rem;font-weight:500;cursor:pointer;transition:all var(--transition);font-family:inherit}
+.btn-secondary:hover{color:var(--text);border-color:var(--text-muted)}
+
+/* === SECTION === */
+.section{max-width:1140px;margin:0 auto;padding:80px 40px;position:relative;z-index:1}
+.section-label{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:14px;font-family:var(--font-mono)}
+.section-title{font-family:var(--font-serif);font-size:2.4rem;font-weight:400;letter-spacing:-0.5px;margin-bottom:14px;color:var(--text)}
+.section-desc{color:var(--text-secondary);font-size:.9rem;max-width:480px;margin-bottom:44px;line-height:1.8}
+
+/* === SECTION DASHED SEPARATOR === */
+.section-sep{max-width:1140px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.section-sep hr{border:none;border-top:1px solid var(--border-dashed)}
+.section-sep .plus-mark{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:20px;height:20px;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--text-muted);font-size:14px;font-weight:300}
+
+/* === FILTER BAR === */
+.filter-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:16px}
+.filter-tabs{display:flex;gap:6px}
+.filter-tab{background:transparent;border:1px solid var(--border-dashed);color:var(--text-muted);border-radius:6px;padding:8px 20px;font-size:.78rem;font-weight:500;cursor:pointer;transition:all var(--transition);font-family:var(--font-mono);letter-spacing:0.3px}
+.filter-tab:hover{color:var(--text);border-color:var(--text-muted)}
+.filter-tab.active{background:var(--blue);color:#fff;border-color:var(--blue);border-style:solid}
+.filter-search{background:transparent;border:1px solid var(--border-dashed);border-radius:6px;padding:9px 16px;color:var(--text);font-size:.82rem;width:240px;outline:none;transition:all var(--transition);font-family:inherit}
+.filter-search::placeholder{color:var(--text-muted)}
+.filter-search:focus{border-color:var(--pink);border-style:solid}
+
+/* === PROJECT CARDS === */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.project-card{background:var(--bg-card);border:1px solid var(--border-dashed);border-radius:var(--radius);padding:28px;transition:all .3s ease;position:relative;overflow:hidden;cursor:pointer}
+.project-card:hover{border-color:rgba(1,46,237,0.3);border-style:solid;background:var(--bg-card-hover)}
+
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.card-identity{display:flex;align-items:center;gap:14px}
+.card-avatar{width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0}
+.card-name{font-size:1rem;font-weight:600;margin-bottom:2px}
+.card-ticker{font-size:.72rem;color:var(--text-muted);font-weight:500;font-family:var(--font-mono);letter-spacing:0.5px}
+.card-status{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.8px;font-family:var(--font-mono)}
+.status-live{background:var(--green-bg);color:var(--green)}
+.status-live .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.status-coming-soon{background:rgba(255,255,255,0.04);color:var(--text-muted)}
+
+/* === COMING SOON BLUR CARDS === */
+.project-card.coming-soon{pointer-events:auto}
+.project-card.coming-soon .card-blur-content{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;transition:all .3s}
+.project-card.coming-soon:hover .card-blur-content{filter:blur(4px);opacity:.5}
+.project-card.coming-soon:hover{border-color:rgba(255,255,255,0.15)}
+.coming-soon-center{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;pointer-events:none}
+.coming-soon-badge{border:1px solid var(--border-dashed);border-radius:var(--radius-xs);padding:18px 36px;text-align:center;backdrop-filter:blur(4px);background:rgba(13,13,23,0.7)}
+.coming-soon-badge .cs-title{font-family:var(--font-serif);font-size:1.1rem;color:var(--text);margin-bottom:4px}
+.coming-soon-badge .cs-sub{font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono)}
+.card-footer-cs{position:relative;z-index:3;pointer-events:auto}
+
+.card-desc{font-size:.84rem;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-progress{margin-bottom:16px}
+.progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.progress-label{font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono)}
+.progress-value{font-size:.82rem;font-weight:700;color:var(--text);font-family:var(--font-mono)}
+.progress-bar{height:4px;background:var(--border);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;border-radius:100px;background:var(--blue);transition:width 1s ease}
+
+.card-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.metric{background:var(--bg-input);border:1px solid var(--border-dashed);border-radius:var(--radius-xs);padding:12px 14px}
+.metric .m-label{font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:var(--font-mono)}
+.metric .m-value{font-size:.88rem;font-weight:700;font-family:var(--font-mono)}
+
+.card-footer{display:flex;gap:10px}
+.btn-card{flex:1;padding:11px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit;border:none}
+.btn-card-primary{background:var(--blue);color:#fff}
+.btn-card-primary:hover{background:var(--pink);color:var(--bg)}
+.btn-card-secondary{background:transparent;color:var(--text-secondary);border:1px solid var(--border-dashed)}
+.btn-card-secondary:hover{color:var(--text);border-color:var(--text-muted)}
+
+/* === COUNTDOWN === */
+.countdown{display:flex;gap:6px;margin-bottom:20px}
+.countdown-item{background:var(--bg-input);border:1px solid var(--border-dashed);border-radius:var(--radius-xs);padding:10px 0;flex:1;text-align:center}
+.countdown-num{font-size:1.15rem;font-weight:700;color:var(--text);line-height:1;font-family:var(--font-mono)}
+.countdown-label{font-size:.55rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-family:var(--font-mono)}
+
+/* === FEATURED PRESALE === */
+.featured{background:var(--bg-card);border:1px solid var(--border-dashed);border-radius:20px;padding:44px;margin-bottom:0;position:relative;overflow:hidden}
+.featured:hover{border-color:rgba(1,46,237,0.3)}
+.featured-grid{display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:center;position:relative;z-index:1}
+.featured-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border-dashed);border-radius:6px;padding:6px 16px;font-size:.68rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;font-family:var(--font-mono)}
+.featured h2{font-family:var(--font-serif);font-size:2rem;font-weight:400;letter-spacing:-0.5px;margin-bottom:14px;color:var(--text)}
+.featured-desc{color:var(--text-secondary);font-size:.88rem;line-height:1.8;margin-bottom:28px;max-width:480px}
+.featured-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.ftag{border:1px solid var(--border-dashed);border-radius:6px;padding:5px 14px;font-size:.72rem;color:var(--text-muted);font-weight:500;font-family:var(--font-mono);letter-spacing:0.3px}
+
+.buy-box{background:rgba(255,255,255,0.02);border:1px solid var(--border-dashed);border-radius:var(--radius);padding:28px}
+.buy-box-title{font-size:.82rem;font-weight:600;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between}
+.buy-box-title .live-tag{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--green);font-weight:600;font-family:var(--font-mono)}
+.buy-box-title .live-tag .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.buy-input-group{margin-bottom:16px}
+.buy-input-group label{display:block;font-size:.68rem;color:var(--text-muted);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:1px;font-family:var(--font-mono)}
+.buy-input-wrap{position:relative}
+.buy-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border-dashed);border-radius:8px;padding:13px 80px 13px 16px;color:var(--text);font-size:1rem;font-weight:600;outline:none;transition:all var(--transition);font-family:var(--font-mono)}
+.buy-input:focus{border-color:var(--pink);border-style:solid}
+.buy-input::placeholder{color:var(--text-muted);font-weight:400}
+.buy-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.75rem;color:var(--text-muted);font-weight:600;font-family:var(--font-mono)}
+.buy-info{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted);margin-bottom:20px;padding:0 2px;font-family:var(--font-mono)}
+.buy-btn{width:100%;padding:14px;border:none;border-radius:8px;background:var(--blue);color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;transition:all var(--transition);font-family:inherit}
+.buy-btn:hover{background:var(--pink);color:var(--bg)}
+.buy-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* === HOW IT WORKS === */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step-card{background:var(--bg-card);border:1px solid var(--border-dashed);border-radius:var(--radius);padding:32px 24px;transition:all .3s;position:relative}
+.step-card:hover{border-color:rgba(1,46,237,0.3);border-style:solid}
+.step-num{font-size:2rem;font-weight:400;font-family:var(--font-serif);color:var(--blue);margin-bottom:20px;line-height:1}
+.step-card h3{font-size:.92rem;font-weight:600;margin-bottom:10px;color:var(--text)}
+.step-card p{font-size:.82rem;color:var(--text-secondary);line-height:1.7}
+
+/* === TOKENOMICS === */
+.tokenomics-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.token-chart{position:relative;width:100%;max-width:320px;margin:0 auto}
+.token-ring{width:100%;aspect-ratio:1}
+.token-info-list{display:flex;flex-direction:column;gap:14px}
+.token-info-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border-dashed)}
+.token-info-item:last-of-type{border-bottom:none}
+.token-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.token-info-item .ti-label{font-size:.85rem;color:var(--text-secondary);flex:1}
+.token-info-item .ti-value{font-size:.88rem;font-weight:700;font-family:var(--font-mono)}
+
+/* === CLAWUNCH SECTION === */
+.clawunch{max-width:1140px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.clawunch-inner{border:1px solid var(--border-dashed);border-radius:20px;padding:56px;position:relative;overflow:hidden;background:var(--bg-card)}
+.clawunch-inner:hover{border-color:rgba(1,46,237,0.3)}
+.clawunch-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
+.clawunch-content h2{font-family:var(--font-serif);font-size:2.6rem;font-weight:400;color:var(--text);letter-spacing:-0.5px;line-height:1.1;margin-bottom:10px}
+.clawunch-content h2 .cl-accent{color:var(--pink);font-style:italic}
+.clawunch-tagline{font-size:.92rem;color:var(--text-secondary);margin-bottom:32px;line-height:1.8;max-width:440px}
+.clawunch-features{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+.clawunch-feat{display:flex;align-items:center;gap:14px;font-size:.85rem;color:var(--text-secondary);font-weight:500}
+.clawunch-feat-icon{width:36px;height:36px;border-radius:8px;border:1px solid var(--border-dashed);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--bg-input)}
+.clawunch-actions{display:flex;gap:12px;flex-wrap:wrap}
+.clawunch-cta{padding:13px 30px;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:inherit;border:none;display:inline-flex;align-items:center;gap:8px}
+.clawunch-cta-primary{background:var(--blue);color:#fff}
+.clawunch-cta-primary:hover{background:var(--pink);color:var(--bg)}
+.clawunch-cta-secondary{background:transparent;color:var(--text-secondary);border:1px solid var(--border-dashed) !important}
+.clawunch-cta-secondary:hover{color:var(--text);border-color:var(--text-muted) !important}
+.clawunch-card{border:1px solid var(--border-dashed);border-radius:var(--radius);padding:36px 32px;position:relative;overflow:hidden;background:rgba(255,255,255,0.01)}
+.clawunch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.4}
+.clawunch-card-label{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-mono)}
+.clawunch-pool{font-size:3rem;font-weight:400;font-family:var(--font-serif);color:var(--pink);line-height:1.1;margin-bottom:6px}
+.clawunch-pool-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:28px;font-family:var(--font-mono)}
+.clawunch-perks{display:flex;flex-direction:column;gap:10px}
+.clawunch-perk{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--border-dashed);border-radius:var(--radius-xs);padding:14px 16px;transition:all var(--transition);background:transparent}
+.clawunch-perk:hover{border-color:rgba(1,46,237,0.3);background:var(--bg-card-hover)}
+.clawunch-perk-icon{width:32px;height:32px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.85rem;border:1px solid var(--border-dashed);background:var(--bg-input)}
+.clawunch-perk-icon.gold{border-color:rgba(251,191,36,0.2)}
+.clawunch-perk-icon.blue{border-color:rgba(99,102,241,0.2)}
+.clawunch-perk-icon.green{border-color:rgba(34,197,94,0.2)}
+.clawunch-perk-icon.purple{border-color:rgba(168,85,247,0.2)}
+.clawunch-perk-text h4{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.clawunch-perk-text p{font-size:.72rem;color:var(--text-muted);line-height:1.5}
+
+/* === MODAL === */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,13,23,0.6);backdrop-filter:blur(12px);z-index:1000;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#0d0d17;border:1px solid var(--border-dashed);border-radius:16px;padding:36px;width:440px;max-width:90vw;box-shadow:0 24px 60px rgba(13,13,23,0.5);animation:modalIn .3s ease-out;position:relative}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border-dashed);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1.1rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.modal-close:hover{color:var(--pink);border-color:rgba(255,204,252,0.3)}
+
+/* === WALLET MODAL === */
+.wallet-title{font-family:var(--font-serif);font-size:1.3rem;margin-bottom:8px}
+.wallet-desc{font-size:.82rem;color:var(--text-secondary);margin-bottom:24px}
+.wallet-list{display:flex;flex-direction:column;gap:8px}
+.wallet-option{display:flex;align-items:center;gap:14px;background:transparent;border:1px solid var(--border-dashed);border-radius:var(--radius-sm);padding:14px 18px;cursor:pointer;transition:all var(--transition)}
+.wallet-option:hover{border-color:rgba(1,46,237,0.4);border-style:solid;background:var(--bg-card-hover)}
+.wallet-option.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.wallet-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;overflow:hidden}
+.wallet-icon img{width:100%;height:100%;object-fit:cover}
+.wallet-option-name{font-size:.88rem;font-weight:600}
+.wallet-option-desc{font-size:.72rem;color:var(--text-muted)}
+.wallet-arrow{margin-left:auto;color:var(--text-muted);font-size:.8rem}
+.wallet-status{font-size:.68rem;color:var(--red);margin-top:2px;font-family:var(--font-mono)}
+.wallet-chain-info{margin-top:16px;padding:12px 16px;border:1px solid var(--border-dashed);border-radius:var(--radius-xs);font-size:.75rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;font-family:var(--font-mono)}
+.wallet-chain-info svg{width:14px;height:14px;flex-shrink:0;color:var(--text-muted)}
+
+/* === FOOTER === */
+footer{border-top:1px solid var(--border-dashed);margin-top:100px;position:relative;z-index:1}
+.footer-inner{max-width:1140px;margin:0 auto;padding:60px 40px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px;margin-bottom:44px}
+.footer-brand p{font-size:.8rem;color:var(--text-muted);margin-top:14px;max-width:280px;line-height:1.7}
+.footer-col h4{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:18px;font-weight:600;font-family:var(--font-mono)}
+.footer-col a{display:block;font-size:.84rem;color:var(--text-secondary);margin-bottom:12px;transition:color var(--transition)}
+.footer-col a:hover{color:var(--pink)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border-dashed);font-size:.72rem;color:var(--text-muted);flex-wrap:wrap;gap:12px;font-family:var(--font-mono)}
+.footer-socials{display:flex;gap:10px}
+.footer-social{width:36px;height:36px;border-radius:8px;border:1px solid var(--border-dashed);display:flex;align-items:center;justify-content:center;transition:all var(--transition);cursor:pointer;color:var(--text-muted)}
+.footer-social:hover{border-color:var(--pink);color:var(--pink)}
+.footer-social svg{width:15px;height:15px}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.anim.visible{opacity:1;transform:translateY(0)}
+
+/* === TOAST === */
+.toast{position:fixed;bottom:30px;right:30px;background:#0d0d17;border:1px solid var(--border-dashed);border-radius:var(--radius-sm);padding:16px 24px;box-shadow:0 12px 40px rgba(13,13,23,0.5);z-index:2000;display:flex;align-items:center;gap:12px;transform:translateY(100px);opacity:0;transition:all .3s ease}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-icon{font-size:1.1rem}
+.toast-text{font-size:.82rem;font-weight:500}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+  .featured-grid{grid-template-columns:1fr}
+  .tokenomics-grid{grid-template-columns:1fr}
+  .token-chart{max-width:260px;margin-bottom:24px}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .clawunch-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .hero{padding:130px 24px 70px}
+  .hero h1{font-size:2.4rem}
+  .section{padding:60px 24px}
+  .projects-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-brand{grid-column:1/-1}
+  .featured{padding:28px}
+  .hero-stats{flex-direction:column;gap:1px}
+  .hero-stat{padding:20px}
+  .steps-grid{grid-template-columns:1fr}
+  .clawunch{padding:0 24px}
+  .clawunch-inner{padding:36px 28px}
+  .clawunch-content h2{font-size:2rem}
+  .clawunch-pool{font-size:2.4rem}
+  .clawunch-actions{flex-direction:column}
+  .clawunch-cta{justify-content:center;width:100%}
+  .nav-inner{padding:0 24px}
+  .mobile-menu{padding:16px 24px}
+  .section-sep{padding:0 24px}
+}
+@media(max-width:480px){
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%;text-align:center}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .filter-bar{flex-direction:column;align-items:stretch}
+  .filter-search{width:100%}
+  .clawunch-inner{padding:28px 20px}
+  .clawunch-content h2{font-size:1.6rem}
+  .clawunch-pool{font-size:2rem}
+}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.15)}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo"><svg viewBox="0 0 2073.78 504.87" fill="#fff"><g><path d="M832.81,32.73v280.94c0,5.84,1.31,10.42,3.91,13.74,2.61,3.32,6.28,4.98,11.01,4.98h22.74v45.95h-28.42c-18.16,0-32.3-5.68-42.4-17.06-10.11-11.37-15.16-27.4-15.16-48.09V32.73h48.32Z"/><path d="M922.4,131.27v149.47c0,17.22,4.38,30.52,13.15,39.91,8.76,9.4,21.12,14.09,37.07,14.09s28.23-4.22,36.84-12.67c8.61-8.45,12.91-20.33,12.91-35.65l3.32,51.4c-4.42,11.06-12.16,20.96-23.21,29.73-11.06,8.76-25.51,13.15-43.35,13.15-27.16,0-48.13-8.72-62.89-26.18-14.77-17.45-22.15-42.05-22.15-73.79v-149.47h48.32ZM1022.36,377.15v-245.88h48.09v245.88h-48.09Z"/><path d="M1095.37,377.15v-245.88h48.32v245.88h-48.32ZM1244.6,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.92-9.48-21.6-14.21-38.02-14.21s-27.99,4.18-36.59,12.55c-8.61,8.37-12.91,20.13-12.91,35.29l-4.98-47.38c7.58-14.84,17.49-26.29,29.73-34.35,12.24-8.05,25.78-12.08,40.62-12.08,26.68,0,47.33,8.73,61.94,26.17,14.61,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M1876.22,377.15V32.73h48.32v344.42h-48.32ZM2025.45,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.93-9.48-21.6-14.21-38.02-14.21s-27.99,4.11-36.6,12.32c-8.61,8.21-12.91,19.82-12.91,34.82l-4.98-47.38c7.58-14.53,17.49-25.78,29.73-33.75,12.24-7.97,25.78-11.96,40.63-11.96,26.68,0,47.33,8.73,61.94,26.17,14.6,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M766.68,174.86v-43.59h-37.19V59.74h-48.32v71.54h-25.35v43.59h25.35v73.66c6.37.48,13.54,1.08,14.56,2.24,3.09,3.54-3.67,4.51-4.89,4.83-3.06.8-6.33,1.46-9.67,2.09v55.51c0,21.01,4.54,37.11,13.62,48.32,9.08,11.22,23.73,16.82,43.94,16.82h27.95v-45.95h-23.21c-4.58,0-8.05-1.66-10.42-4.98-2.37-3.32-3.55-7.89-3.55-13.74v-138.81h37.19Z"/><g><path d="M635.05,327.41c-2.61-3.32-3.91-7.89-3.91-13.74v-43.27c-16.98,7.48-33.17,17.3-48.32,29.06v13.74c0,20.69,5.05,36.72,15.16,48.09,10.1,11.37,24.24,17.06,42.4,17.06h28.43v-45.95h-22.74c-4.73,0-8.41-1.66-11.01-4.98Z"/><path d="M631.14,234.44V32.73h-48.32v172.41c15.2,11.79,31.39,21.73,48.32,29.3Z"/></g><g><path d="M280.35,187.89c8.92,9.48,13.38,22.9,13.38,40.27v5.04c9.82-4.05,19.43-8.72,28.41-14.05,6.27-3.73,12.02-9.77,18.61-13.19-2.69-21.49-9.55-38.84-20.61-52.05-14.61-17.45-35.26-26.17-61.94-26.17-15.32,0-29.3,4.42-41.93,13.27-11.97,8.38-21.78,20.2-29.5,35.38-3.32-8.49-7.62-15.98-12.9-22.47-14.21-17.45-34.27-26.17-60.17-26.17-14.85,0-28.39,4.03-40.62,12.08-9.73,6.4-17.97,14.99-24.75,25.69v-34.22H0v245.88h48.32v-155.63c0-15.16,4.3-26.92,12.91-35.29,8.61-8.37,20.8-12.55,36.6-12.55s27.71,4.74,36.24,14.21c8.53,9.48,12.79,22.9,12.79,40.27v149h48.32v-149.23c0-.6-.02-1.18-.03-1.78l.03.12c0-16.74,4.1-29.69,12.32-38.85,8.21-9.16,19.82-13.74,34.82-13.74,16.42,0,29.1,4.74,38.02,14.21Z"/><path d="M317.93,282.69c-.71-.57-1.65-.86-2.62-.92-5.46-.37-10.45-3.7-15.42-5.99-1.94-.89-4.02-1.83-6.16-2.78v104.16h48.32v-75.41c-7.62-6.02-15.61-12.2-24.12-19.05Z"/></g><path d="M636.48,250.5c-1.24-1.76-14.75-2.13-17.87-2.92-67.37-17.05-124.44-98-147.09-186.47-.04-.16-.07-.33-.1-.5l-7.8-60.62-1.63,1.57c-.62.6-1.01,1.43-1.09,2.32-4.61,51.23-18.65,97.91-38.96,139.69-.19.39-.46.71-.76,1-5.17,5.02-19.63,30.69-25.44,38.35-4.58,6.03-11.37,14.09-16.49,19.8-.44.49-1.02.74-1.62.97-.69.27-1.08,1.07-1.66,1.73-.45.52-.82,1.22-1.23,1.8-6.31,2.37-11.37,9.73-17.02,13.9-13.82,10.21-29.63,17.87-44.7,23.06-4,1.38-23.81,5.02-24.71,6.31-1.9,2.72.43,3.11,1.71,3.79,6.37,3.39,18.33,4.37,25.98,7.13,8.73,3.16,18.01,8.24,25.12,12.31,3.71,2.12,7.43,5.21,11.5,5.56.72.06,1.42.33,1.95.86,26.8,26.82,46.7,42.68,67.58,82.22,19.78,37.46,34.67,91.68,37.59,139.12.14,2.19,2.05,3.89,3.98,3.25,2.26-.75.57-4.19,1.14-10.04,10.11-103.14,62.8-197.62,130.85-229.79,10.95-5.18,25.65-6.21,37.09-9.91.92-.3,5.96-1.2,3.65-4.49Z"/><g><path d="M1559.52,137.33c7.9-.24,11.15,10.1,4.51,14.38-2.06,1.33-4.05,2.74-5.88,4.34-66.31,58.12-62.97,154.37,4.14,210.58.08.06.15.13.23.19,5.82,4.76,2.26,14.18-5.26,13.88-67.87-2.7-143.98-16.65-198.18-54.95-87.56-61.89-30.13-127.25,46.5-158.14,46.75-18.84,102.27-28.71,153.95-30.28Z"/><path d="M1692.71,322.11c-.08.35.23.67.58.61,7.79-1.25,16.11-8.49,24.32-24.05,4.17-7.9,6.81-19.61,7.74-32.51-15.62,12.01-27.66,32.75-32.64,55.95Z"/><path d="M1659.32,239.76c.23-.25.38-.55.71-.59.12-.01.23-.06.31-.15,1.83-1.87,4.32-4.57,5.98-6.58,2.09-2.53,7.35-11.1,9.1-12.54.05-.04.1-.1.13-.16,5.15-9.71,9.16-20.23,11.64-31.53.08-.36-.23-.67-.59-.61-1.09.2-2.2.46-3.34.8-20.19,5.99-28.58,28.98-29.11,54.3,0,.44.52.68.85.39,1.19-1.08,2.38-2.18,3.74-2.69.1-.04.18-.1.24-.18.11-.16.22-.32.34-.45Z"/><path d="M1656.29,269.39c4.59,25.86,16.03,48.79,30.05,52.89.37.11.72-.22.64-.59-2.35-11.21-6.4-22.38-11.29-30.88-5.93-10.3-11.64-15.66-18.56-21.87-.36-.32-.92-.01-.84.46Z"/><path d="M1725.25,243.53c-2.24-28.05-12.42-54.81-32.25-56.29-.32-.02-.58.26-.53.58l.69,4.89s0,.05.01.07c5.64,20.26,17.33,39.31,32.08,50.75Z"/><path d="M1716.79,254.77c-.19-.25-2.28-.3-2.76-.41-10.39-2.41-19.2-13.88-22.69-26.4,0-.02-.01-.05-.01-.07l-1.2-8.58-.25.22c-.1.08-.16.2-.17.33-.71,7.26-2.88,13.86-6.01,19.78-.03.05-.07.1-.12.14-.8.71-3.03,4.35-3.92,5.43-.71.85-1.75,1.99-2.54,2.8-.07.07-.16.1-.25.14-.11.04-.17.15-.26.24-.07.07-.13.17-.19.26-.97.34-1.75,1.38-2.63,1.97-2.13,1.45-4.57,2.53-6.9,3.26-.62.19-3.67.71-3.81.89-.29.39.07.44.26.54.98.48,2.83.62,4.01,1.01,1.35.45,2.78,1.17,3.88,1.74.57.3,1.15.74,1.78.79.11,0,.22.05.3.12,4.13,3.8,7.21,6.04,10.43,11.64,3.05,5.3,5.35,12.98,5.8,19.7.02.31.32.55.61.46.35-.11.09-.59.18-1.42,1.56-14.6,9.69-27.98,20.19-32.54,1.69-.73,3.96-.88,5.72-1.4.14-.04.92-.17.56-.64Z"/><path d="M1728.71,158.13c-6.61,3.37-.05,7.51,1.87,10.76,16.26,27.61,28.9,49.58,33.07,73.65,5.76,5.95,13.24,10.41,21.46,11.81.65.11,3.49.16,3.75.41.48.47-.57.59-.77.64-2.4.52-5.48.67-7.78,1.4-5.79,1.85-11.05,5.15-15.4,9.39-.89,13.93-4.6,29.15-11.89,46.83-7.1,17.21-22.11,28.73-22.23,47.16,36.21-5.51,95.49-31.97,114.49-64.34,43.86-74.71-54.49-129.08-116.55-137.72Z"/></g></g></svg></a>
+    <div class="nav-links">
+      <a href="#projects" class="active">Presale</a>
+      <a href="#how">How it Works</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#">Docs</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn-connect" id="connectBtn" onclick="openWalletModal()">Connect Wallet</button>
+      <button class="hamburger" onclick="toggleMobileMenu()">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#projects" onclick="toggleMobileMenu()">Presale</a>
+  <a href="#how" onclick="toggleMobileMenu()">How it Works</a>
+  <a href="#tokenomics" onclick="toggleMobileMenu()">Tokenomics</a>
+  <a href="#" onclick="toggleMobileMenu()">Docs</a>
+</div>
+
+<!-- HERO -->
+<section class="hero anim">
+  <h1>Launch Your <span class="accent">Token</span><br>Presale on <svg class="inline-logo" viewBox="0 0 2073.78 504.87" fill="var(--pink)"><g><path d="M832.81,32.73v280.94c0,5.84,1.31,10.42,3.91,13.74,2.61,3.32,6.28,4.98,11.01,4.98h22.74v45.95h-28.42c-18.16,0-32.3-5.68-42.4-17.06-10.11-11.37-15.16-27.4-15.16-48.09V32.73h48.32Z"/><path d="M922.4,131.27v149.47c0,17.22,4.38,30.52,13.15,39.91,8.76,9.4,21.12,14.09,37.07,14.09s28.23-4.22,36.84-12.67c8.61-8.45,12.91-20.33,12.91-35.65l3.32,51.4c-4.42,11.06-12.16,20.96-23.21,29.73-11.06,8.76-25.51,13.15-43.35,13.15-27.16,0-48.13-8.72-62.89-26.18-14.77-17.45-22.15-42.05-22.15-73.79v-149.47h48.32ZM1022.36,377.15v-245.88h48.09v245.88h-48.09Z"/><path d="M1095.37,377.15v-245.88h48.32v245.88h-48.32ZM1244.6,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.92-9.48-21.6-14.21-38.02-14.21s-27.99,4.18-36.59,12.55c-8.61,8.37-12.91,20.13-12.91,35.29l-4.98-47.38c7.58-14.84,17.49-26.29,29.73-34.35,12.24-8.05,25.78-12.08,40.62-12.08,26.68,0,47.33,8.73,61.94,26.17,14.61,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M1876.22,377.15V32.73h48.32v344.42h-48.32ZM2025.45,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.93-9.48-21.6-14.21-38.02-14.21s-27.99,4.11-36.6,12.32c-8.61,8.21-12.91,19.82-12.91,34.82l-4.98-47.38c7.58-14.53,17.49-25.78,29.73-33.75,12.24-7.97,25.78-11.96,40.63-11.96,26.68,0,47.33,8.73,61.94,26.17,14.6,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M766.68,174.86v-43.59h-37.19V59.74h-48.32v71.54h-25.35v43.59h25.35v73.66c6.37.48,13.54,1.08,14.56,2.24,3.09,3.54-3.67,4.51-4.89,4.83-3.06.8-6.33,1.46-9.67,2.09v55.51c0,21.01,4.54,37.11,13.62,48.32,9.08,11.22,23.73,16.82,43.94,16.82h27.95v-45.95h-23.21c-4.58,0-8.05-1.66-10.42-4.98-2.37-3.32-3.55-7.89-3.55-13.74v-138.81h37.19Z"/><g><path d="M635.05,327.41c-2.61-3.32-3.91-7.89-3.91-13.74v-43.27c-16.98,7.48-33.17,17.3-48.32,29.06v13.74c0,20.69,5.05,36.72,15.16,48.09,10.1,11.37,24.24,17.06,42.4,17.06h28.43v-45.95h-22.74c-4.73,0-8.41-1.66-11.01-4.98Z"/><path d="M631.14,234.44V32.73h-48.32v172.41c15.2,11.79,31.39,21.73,48.32,29.3Z"/></g><g><path d="M280.35,187.89c8.92,9.48,13.38,22.9,13.38,40.27v5.04c9.82-4.05,19.43-8.72,28.41-14.05,6.27-3.73,12.02-9.77,18.61-13.19-2.69-21.49-9.55-38.84-20.61-52.05-14.61-17.45-35.26-26.17-61.94-26.17-15.32,0-29.3,4.42-41.93,13.27-11.97,8.38-21.78,20.2-29.5,35.38-3.32-8.49-7.62-15.98-12.9-22.47-14.21-17.45-34.27-26.17-60.17-26.17-14.85,0-28.39,4.03-40.62,12.08-9.73,6.4-17.97,14.99-24.75,25.69v-34.22H0v245.88h48.32v-155.63c0-15.16,4.3-26.92,12.91-35.29,8.61-8.37,20.8-12.55,36.6-12.55s27.71,4.74,36.24,14.21c8.53,9.48,12.79,22.9,12.79,40.27v149h48.32v-149.23c0-.6-.02-1.18-.03-1.78l.03.12c0-16.74,4.1-29.69,12.32-38.85,8.21-9.16,19.82-13.74,34.82-13.74,16.42,0,29.1,4.74,38.02,14.21Z"/><path d="M317.93,282.69c-.71-.57-1.65-.86-2.62-.92-5.46-.37-10.45-3.7-15.42-5.99-1.94-.89-4.02-1.83-6.16-2.78v104.16h48.32v-75.41c-7.62-6.02-15.61-12.2-24.12-19.05Z"/></g><path d="M636.48,250.5c-1.24-1.76-14.75-2.13-17.87-2.92-67.37-17.05-124.44-98-147.09-186.47-.04-.16-.07-.33-.1-.5l-7.8-60.62-1.63,1.57c-.62.6-1.01,1.43-1.09,2.32-4.61,51.23-18.65,97.91-38.96,139.69-.19.39-.46.71-.76,1-5.17,5.02-19.63,30.69-25.44,38.35-4.58,6.03-11.37,14.09-16.49,19.8-.44.49-1.02.74-1.62.97-.69.27-1.08,1.07-1.66,1.73-.45.52-.82,1.22-1.23,1.8-6.31,2.37-11.37,9.73-17.02,13.9-13.82,10.21-29.63,17.87-44.7,23.06-4,1.38-23.81,5.02-24.71,6.31-1.9,2.72.43,3.11,1.71,3.79,6.37,3.39,18.33,4.37,25.98,7.13,8.73,3.16,18.01,8.24,25.12,12.31,3.71,2.12,7.43,5.21,11.5,5.56.72.06,1.42.33,1.95.86,26.8,26.82,46.7,42.68,67.58,82.22,19.78,37.46,34.67,91.68,37.59,139.12.14,2.19,2.05,3.89,3.98,3.25,2.26-.75.57-4.19,1.14-10.04,10.11-103.14,62.8-197.62,130.85-229.79,10.95-5.18,25.65-6.21,37.09-9.91.92-.3,5.96-1.2,3.65-4.49Z"/><g><path d="M1559.52,137.33c7.9-.24,11.15,10.1,4.51,14.38-2.06,1.33-4.05,2.74-5.88,4.34-66.31,58.12-62.97,154.37,4.14,210.58.08.06.15.13.23.19,5.82,4.76,2.26,14.18-5.26,13.88-67.87-2.7-143.98-16.65-198.18-54.95-87.56-61.89-30.13-127.25,46.5-158.14,46.75-18.84,102.27-28.71,153.95-30.28Z"/><path d="M1692.71,322.11c-.08.35.23.67.58.61,7.79-1.25,16.11-8.49,24.32-24.05,4.17-7.9,6.81-19.61,7.74-32.51-15.62,12.01-27.66,32.75-32.64,55.95Z"/><path d="M1659.32,239.76c.23-.25.38-.55.71-.59.12-.01.23-.06.31-.15,1.83-1.87,4.32-4.57,5.98-6.58,2.09-2.53,7.35-11.1,9.1-12.54.05-.04.1-.1.13-.16,5.15-9.71,9.16-20.23,11.64-31.53.08-.36-.23-.67-.59-.61-1.09.2-2.2.46-3.34.8-20.19,5.99-28.58,28.98-29.11,54.3,0,.44.52.68.85.39,1.19-1.08,2.38-2.18,3.74-2.69.1-.04.18-.1.24-.18.11-.16.22-.32.34-.45Z"/><path d="M1656.29,269.39c4.59,25.86,16.03,48.79,30.05,52.89.37.11.72-.22.64-.59-2.35-11.21-6.4-22.38-11.29-30.88-5.93-10.3-11.64-15.66-18.56-21.87-.36-.32-.92-.01-.84.46Z"/><path d="M1725.25,243.53c-2.24-28.05-12.42-54.81-32.25-56.29-.32-.02-.58.26-.53.58l.69,4.89s0,.05.01.07c5.64,20.26,17.33,39.31,32.08,50.75Z"/><path d="M1716.79,254.77c-.19-.25-2.28-.3-2.76-.41-10.39-2.41-19.2-13.88-22.69-26.4,0-.02-.01-.05-.01-.07l-1.2-8.58-.25.22c-.1.08-.16.2-.17.33-.71,7.26-2.88,13.86-6.01,19.78-.03.05-.07.1-.12.14-.8.71-3.03,4.35-3.92,5.43-.71.85-1.75,1.99-2.54,2.8-.07.07-.16.1-.25.14-.11.04-.17.15-.26.24-.07.07-.13.17-.19.26-.97.34-1.75,1.38-2.63,1.97-2.13,1.45-4.57,2.53-6.9,3.26-.62.19-3.67.71-3.81.89-.29.39.07.44.26.54.98.48,2.83.62,4.01,1.01,1.35.45,2.78,1.17,3.88,1.74.57.3,1.15.74,1.78.79.11,0,.22.05.3.12,4.13,3.8,7.21,6.04,10.43,11.64,3.05,5.3,5.35,12.98,5.8,19.7.02.31.32.55.61.46.35-.11.09-.59.18-1.42,1.56-14.6,9.69-27.98,20.19-32.54,1.69-.73,3.96-.88,5.72-1.4.14-.04.92-.17.56-.64Z"/><path d="M1728.71,158.13c-6.61,3.37-.05,7.51,1.87,10.76,16.26,27.61,28.9,49.58,33.07,73.65,5.76,5.95,13.24,10.41,21.46,11.81.65.11,3.49.16,3.75.41.48.47-.57.59-.77.64-2.4.52-5.48.67-7.78,1.4-5.79,1.85-11.05,5.15-15.4,9.39-.89,13.93-4.6,29.15-11.89,46.83-7.1,17.21-22.11,28.73-22.23,47.16,36.21-5.51,95.49-31.97,114.49-64.34,43.86-74.71-54.49-129.08-116.55-137.72Z"/></g></g></svg></h1>
+  <p class="hero-sub">Create and join token presales on Base. Built for builders, powered by Bankr Bot.</p>
+  <div class="partner-label">Powered by</div>
+  <div class="partner-strip">
+    <svg class="bankr-logo" viewBox="0 0 526.19 469.47"><defs><style>.bk1{fill:#14161a}.bk2{fill:#e4e0ce}.bk3{fill:#fdde45}.bk4{fill:#06081c}.bk5{fill:#f9623d}</style></defs><g><path class="bk4" d="M21.09,0l487.25.57c9.05,3.19,14.6,8.73,17.8,17.8l.06,432.14c-5.94,11.84-17.62,18.54-30.89,18.95H32.32c-12.72-.38-23.62-6.48-30.15-17.32C-1.27,308.03.07,162.66,1.49,18.37,4.83,8.64,11.27,2.97,21.09,0Z"/><path class="bk2" d="M358.75,13.7h7.12c.57,17.31-.12,34.88,0,52.21.69,99.63-.53,199.42.01,299.05H14.61c0-1.59,0-3.18,0-4.76,0-2.37,0-4.75,0-7.12.06-109.85-1.08-220.26,1.24-329.84,3.79-4.24,7.56-9.79,14.06-9.67,109.61.23,219.26.13,328.83.13Z"/><path class="bk2" d="M513.01,348.34c-.03,4.74.05,9.5,0,14.24,0,.79.01,1.58,0,2.37h-130.55s.01-351.25.01-351.25c23.24,3.18,111.82-5.3,124.36,2.62,2.51,1.58,4.11,4,5.13,6.74,1.32,108.36,1.85,216.92,1.05,325.29Z"/><path class="bk2" d="M513.01,381.56c-.44,15.94,6.35,43.56-17.69,42.83l-465.33-.07c-20.81-1.23-14.67-23.48-15.38-38.02l8.2-4.75h490.2Z"/><path class="bk1" d="M382.48,13.7v351.27s130.53-.01,130.53-.01c-.07,5.53.15,11.09,0,16.61H22.81s-8.2,4.75-8.2,4.75c-.43-8.87.02-13.87,0-21.36h351.27c-.54-99.62.68-199.41-.01-299.04,5.42.52,6.73,1.14,8.38-4.58,2.36-8.21,1.23-46.84,3.5-50,3.04-1.07,4.47,2.33,4.73,2.36Z"/><path class="bk1" d="M81.07,49.3c-1.07,8.28,14.68,6.93,20.06,7.18,49.34,2.31,100.2-2.63,151.91.04,16.64.86,37.21-3.61,51.96,5,10.01,5.85,15.3,23.9,27.65,21.01,2.24,6.14,4.09,6.86,4.84,15.35,4.28,48.78-3.38,103.73-.09,153.16,0-.42-2.5-3.71-2.55-8.03-.47-40.3,5.54-100.71.19-137.95-1.12-7.81-7.14-5.21-7.14-2.36v180.37c0,.93-5.27,15.74-6.16,17.57-7.13,14.64-20.54,22.32-35.94,25.77-59.67-3.33-128.25,6.43-186.9.54-14.24-1.43-19.96-6.21-30.86-14.24-3.5,11.71,7.81,11.59,13.03,19.01-15.93-5.91-20.95-11.22-28.48-26.11,15.77,2.59,2.37-12.95,2.37-17.8V90.83c0-1.8,5.03-9.68,6.01-13.11.9-3.12-1.48-6.7-1.22-6.95,1.99-1.9,23.3-4.5,16.57-16.73.34-.22-1.24-1.18,4.75-4.75Z"/><path class="bk5" d="M94.69,59.36c59.3,4.22,131.58-7.59,189.36-.63,18.35,2.21,34.64,18.56,36.73,36.85-4.45,60.09,5.9,128.55.12,187.61-1.83,18.73-16.18,33.34-34.48,36.72-61.11-4.4-129.87,5.67-190.04.06-19.55-1.82-34.51-20.06-36.68-39.27-6.45-57.26,4.66-126.38.22-184.92,3-17.99,17.33-32.13,34.77-36.43Z"/><path class="bk3" d="M263.81,234.42c-.15,2.97.51,13.74.01,14.25-3.21,3.28-19.14-8.75-14.25,14.23h-118.67c3.71-23.43-7.77-10.22-14.04-14.44-2.84-1.91.27-11.31-.2-11.66-1.4-1.06-13.34.97-14.25,0-.67-.71-2.68-17.44,1.52-18.67,19.84-5.82,12.74,11.99,17.4,15.3,2.35,1.67,6.15-1.4,8.13-.93,6.63,1.57,2.65,14.97,3.8,16.17,3.9,4.05,98.61-3.19,112.36.08,4.22-.99,3.22-13.43,4.05-14.22s11,.03,14.13-.12c.28-5.51-.21-11.12,0-16.63,15.32-1.66,18.32,1.2,16.64,16.64-5.51.19-11.12-.27-16.63,0Z"/><path class="bk3" d="M161.76,129.99v61.71c-5.35-.59-30.85,2.25-30.85-3.56v-58.15h30.85Z"/><path class="bk3" d="M249.57,132.36v53.4c0,6.12-23.88,6.86-28.48,5.93v-59.33h28.48Z"/><path class="bk4" d="M337.39,251.03c.16,7.79.44,15.97,0,23.73-3.57.33-3.57,6.79,0,7.12-3.43,29.06-22.6,49.6-51.64,53.97-59.7-2.53-125.6,5.47-184.59.7-7.46-.6-13.22-2.28-20.09-4.83-5.22-7.42-16.53-7.3-13.03-19.01,10.9,8.03,16.61,12.81,30.86,14.24,58.64,5.89,127.22-3.87,186.9-.54,15.4-3.45,28.81-11.12,35.94-25.77.89-1.83,6.16-16.64,6.16-17.57V102.7c0-2.85,6.01-5.46,7.14,2.36,5.35,37.25-.66,97.65-.19,137.95.05,4.31,2.54,7.6,2.55,8.03Z"/><path class="bk4" d="M76.32,54.04c6.73,12.24-14.58,14.84-16.57,16.73-.26.24,2.12,3.82,1.22,6.95-.98,3.42-6.01,11.31-6.01,13.11v196.99c0,4.85,13.4,20.39-2.37,17.8-6.87-13.57-8.61-23.56-9.59-39.06-2.33-36.77-4.81-150.37,4.18-181.14,2.82-9.66,8.61-22.15,17.39-27.72,4.59-2.91,10.79-3.03,11.76-3.66Z"/><path class="bk4" d="M332.64,82.52c-12.34,2.89-17.63-15.16-27.65-21.01-14.74-8.61-35.32-4.14-51.96-5-51.71-2.67-102.57,2.27-151.91-.04-5.37-.25-21.13,1.1-20.06-7.18,3.16-1.88,5.18-5.74,10.59-4.82,60.48,4.07,127.63-5.35,187.29.36,27.81,2.66,44.12,11.51,53.69,37.69Z"/><path class="bk1" d="M467.92,262.9c-.75-.74-11.32.53-14.25.01v-14.27c2.96-.54,13.48.8,14.27.02,3.59-3.54-7.66-31.08,8.29-31.08s4.7,27.54,8.29,31.08c.78.77,11.31-.57,14.26-.02v14.27s-14.25-.01-14.25-.01v73.57h-16.61c-1.98-9.36,2.62-70.99,0-73.57Z"/><path class="bk4" d="M425.2,220.18v56.96c0,.76,13.84-1.68,14.28,1.36,2.29,15.66.89,16.81-14.28,15.25v42.72h-14.24v-42.72c0-1.14-16.83,4.94-16.83-8.31,0-13.25,16.83-7.16,16.83-8.31v-56.96h14.24Z"/><rect class="bk4" x="396.72" y="73.03" width="102.05" height="14.24"/><path class="bk1" d="M484.53,101.51v16.61h-72.39c-4.85,0-4.85-16.61,0-16.61h72.39Z"/><path class="bk1" d="M484.53,58.79h-73.57c.21-9.7-3.07-15.36,8.19-16.73,7.43-.9,56.73-1.12,61.49.45,5.93,1.95,3.6,11.17,3.89,16.28Z"/><path class="bk1" d="M102.43,393.43v16.61h-59.33c-.4-3.36-.63-16.61,3.56-16.61h55.77Z"/></g></svg>
+    <span style="font-family:var(--font-sans);font-size:.85rem;font-weight:600;color:var(--text);letter-spacing:-.3px">Bankr Bot</span>
+  </div>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Presales</button>
+    <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Learn More</button>
+  </div>
+</section>
+
+<!-- SEPARATOR -->
+<div class="section-sep"><hr><div class="plus-mark">+</div></div>
+
+<!-- CLAWUNCH SECTION -->
+<section class="clawunch anim" id="clawunch" style="margin-top:60px">
+  <div class="clawunch-inner">
+    <div class="clawunch-grid">
+      <div class="clawunch-content">
+        <div class="section-label">For Builders</div>
+        <h2><span class="cl-accent">Moltlunch</span> with us</h2>
+        <p class="clawunch-tagline">
+          Got a token? Launch it here. We'll help you get listed, get seen, and get funded. Plus there's $10K in rewards for builders who ship.
+        </p>
+        <div class="clawunch-features">
+          <div class="clawunch-feat">
+            <div class="clawunch-feat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <span>Skip the line, get listed fast</span>
+          </div>
+          <div class="clawunch-feat">
+            <div class="clawunch-feat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg></div>
+            <span>We help push your launch to the community</span>
+          </div>
+          <div class="clawunch-feat">
+            <div class="clawunch-feat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>Contract review before you go live</span>
+          </div>
+          <div class="clawunch-feat">
+            <div class="clawunch-feat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <span>$10,000 rewards pool for builders</span>
+          </div>
+        </div>
+        <div class="clawunch-actions">
+          <button class="clawunch-cta clawunch-cta-primary" onclick="showToast('&#128640;','Application form coming soon! Stay tuned.')">
+            Apply to Launch
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="clawunch-cta clawunch-cta-secondary" onclick="showToast('&#128196;','Builder docs coming soon!')">
+            Learn More
+          </button>
+        </div>
+      </div>
+      <div class="clawunch-card">
+        <div class="clawunch-card-label">Rewards Pool</div>
+        <div class="clawunch-pool">$10,000</div>
+        <div class="clawunch-pool-sub">Given out to builders every season</div>
+        <div class="clawunch-perks">
+          <div class="clawunch-perk">
+            <div class="clawunch-perk-icon gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="clawunch-perk-text">
+              <h4>Launch Bonus</h4>
+              <p>Up to $3,000 in starting liquidity for your project</p>
+            </div>
+          </div>
+          <div class="clawunch-perk">
+            <div class="clawunch-perk-icon blue"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="clawunch-perk-text">
+              <h4>Volume Rewards</h4>
+              <p>More volume your token does, more you earn from the pool</p>
+            </div>
+          </div>
+          <div class="clawunch-perk">
+            <div class="clawunch-perk-icon green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="clawunch-perk-text">
+              <h4>Community Grant</h4>
+              <p>Extra funds to grow your community and get traction</p>
+            </div>
+          </div>
+          <div class="clawunch-perk">
+            <div class="clawunch-perk-icon purple"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="clawunch-perk-text">
+              <h4>Top Builder Prize</h4>
+              <p>Grand prize each season for the best project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARATOR -->
+<div class="section-sep"><hr><div class="plus-mark">+</div></div>
+
+<!-- FEATURED PRESALE -->
+<div class="section" style="padding-top:60px">
+  <div class="featured anim">
+    <div class="featured-grid">
+      <div>
+        <div class="featured-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--blue)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured Presale</div>
+        <h2>Moltlunch Genesis Token</h2>
+        <p class="featured-desc">The MOLT token. Hold it to get early access to new launches, vote on what gets listed, and earn a cut from the platform.</p>
+        <div class="featured-tags">
+          <span class="ftag">Infrastructure</span>
+          <span class="ftag">Governance</span>
+          <span class="ftag">Base</span>
+          <span class="ftag">Moltbook</span>
+        </div>
+        <div class="card-progress">
+          <div class="progress-header">
+            <span class="progress-label">Raised</span>
+            <span class="progress-value" id="featuredRaised">$72,450 / $100,000</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="featuredBar" style="width:72.4%"></div></div>
+        </div>
+        <div class="countdown" id="featuredCountdown">
+          <div class="countdown-item"><div class="countdown-num" id="fc-days">03</div><div class="countdown-label">Days</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="fc-hours">14</div><div class="countdown-label">Hours</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="fc-mins">22</div><div class="countdown-label">Mins</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="fc-secs">45</div><div class="countdown-label">Secs</div></div>
+        </div>
+      </div>
+      <div class="buy-box">
+        <div class="buy-box-title">
+          <span>Contribute to Presale</span>
+          <span class="live-tag"><span class="dot"></span> LIVE</span>
+        </div>
+        <div class="buy-input-group">
+          <label>You Pay</label>
+          <div class="buy-input-wrap">
+            <input type="number" class="buy-input" id="buyAmountFeatured" placeholder="0.00" oninput="updateFeaturedReceive()">
+            <span class="buy-suffix">USDC</span>
+          </div>
+        </div>
+        <div class="buy-input-group">
+          <label>You Receive</label>
+          <div class="buy-input-wrap">
+            <input type="text" class="buy-input" id="buyReceiveFeatured" placeholder="0.00" readonly style="opacity:.6">
+            <span class="buy-suffix">MOLT</span>
+          </div>
+        </div>
+        <div class="buy-info">
+          <span>Price: 1 MOLT = $0.004</span>
+          <span>Min: $10</span>
+        </div>
+        <button class="buy-btn" id="featuredBuyBtn" onclick="handleBuy('Moltlunch Genesis','MOLT')">Connect Wallet to Buy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEPARATOR -->
+<div class="section-sep"><hr><div class="plus-mark">+</div></div>
+
+<!-- PROJECTS LIST -->
+<section class="section" id="projects" style="padding-top:60px">
+  <div class="section-label">Launchpad</div>
+  <div class="section-title">All Projects</div>
+  <div class="section-desc">What's launching next. More projects dropping soon.</div>
+  <div class="filter-bar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterProjects('all',this)">All Projects</button>
+      <button class="filter-tab" onclick="filterProjects('coming_soon',this)">Coming Soon</button>
+    </div>
+    <input type="text" class="filter-search" placeholder="Search projects..." oninput="searchProjects(this.value)">
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- SEPARATOR -->
+<div class="section-sep"><hr><div class="plus-mark">+</div></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how" style="padding-top:60px">
+  <div class="section-label">Process</div>
+  <div class="section-title">How It Works</div>
+  <div class="section-desc">Four steps. That's it.</div>
+  <div class="steps-grid">
+    <div class="step-card anim"><div class="step-num">01</div><h3>Connect Wallet</h3><p>Hook up MetaMask. Takes 10 seconds.</p></div>
+    <div class="step-card anim"><div class="step-num">02</div><h3>Pick a Presale</h3><p>Browse what's live and what's coming up. Check the numbers, read the details.</p></div>
+    <div class="step-card anim"><div class="step-num">03</div><h3>Put In USDC</h3><p>Choose how much you want to contribute. Confirm it. Tokens get allocated to you.</p></div>
+    <div class="step-card anim"><div class="step-num">04</div><h3>Get Your Tokens</h3><p>Presale ends, you claim your tokens. Liquidity gets locked. Done.</p></div>
+  </div>
+</section>
+
+<!-- SEPARATOR -->
+<div class="section-sep"><hr><div class="plus-mark">+</div></div>
+
+<!-- TOKENOMICS -->
+<section class="section" id="tokenomics" style="padding-top:60px">
+  <div class="section-label">MOLT Token</div>
+  <div class="section-title">Tokenomics</div>
+  <div class="section-desc">Where the tokens go. No hidden allocations.</div>
+  <div class="tokenomics-grid anim">
+    <div class="token-chart">
+      <svg class="token-ring" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="20"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#012eed" stroke-width="20" stroke-dasharray="201.06 301.59" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#ffccfc" stroke-width="20" stroke-dasharray="125.66 376.99" stroke-dashoffset="-201.06" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#fff" stroke-width="20" stroke-dasharray="75.4 427.26" stroke-dashoffset="-326.73" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#666" stroke-width="20" stroke-dasharray="60.32 442.34" stroke-dashoffset="-402.12" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#333" stroke-width="20" stroke-dasharray="40.21 462.44" stroke-dashoffset="-462.44" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+        <text x="100" y="92" text-anchor="middle" fill="#fff" font-size="22" font-weight="400" font-family="DM Serif Display,serif">1B</text>
+        <text x="100" y="114" text-anchor="middle" fill="#555" font-size="9" font-weight="500" font-family="JetBrains Mono,monospace" letter-spacing="1">TOTAL SUPPLY</text>
+      </svg>
+    </div>
+    <div class="token-info-list">
+      <div class="token-info-item"><div class="token-dot" style="background:#012eed"></div><span class="ti-label">Presale</span><span class="ti-value">40%</span></div>
+      <div class="token-info-item"><div class="token-dot" style="background:#ffccfc"></div><span class="ti-label">Liquidity Pool</span><span class="ti-value">25%</span></div>
+      <div class="token-info-item"><div class="token-dot" style="background:#fff"></div><span class="ti-label">Team (12mo vesting)</span><span class="ti-value">15%</span></div>
+      <div class="token-info-item"><div class="token-dot" style="background:#666"></div><span class="ti-label">Rewards</span><span class="ti-value">12%</span></div>
+      <div class="token-info-item"><div class="token-dot" style="background:#333"></div><span class="ti-label">Advisors</span><span class="ti-value">8%</span></div>
+      <div style="margin-top:20px;padding:20px;border:1px solid var(--border-dashed);border-radius:var(--radius-sm)">
+        <div style="font-size:.65rem;color:var(--text-muted);margin-bottom:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:1.5px">Token Details</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.82rem">
+          <div><span style="color:var(--text-muted)">Network:</span> <strong>Base</strong></div>
+          <div><span style="color:var(--text-muted)">Symbol:</span> <strong>MOLT</strong></div>
+          <div><span style="color:var(--text-muted)">Supply:</span> <strong>1,000,000,000</strong></div>
+          <div><span style="color:var(--text-muted)">Type:</span> <strong>ERC-20</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><svg viewBox="0 0 2073.78 504.87" fill="#fff" style="height:24px"><g><path d="M832.81,32.73v280.94c0,5.84,1.31,10.42,3.91,13.74,2.61,3.32,6.28,4.98,11.01,4.98h22.74v45.95h-28.42c-18.16,0-32.3-5.68-42.4-17.06-10.11-11.37-15.16-27.4-15.16-48.09V32.73h48.32Z"/><path d="M922.4,131.27v149.47c0,17.22,4.38,30.52,13.15,39.91,8.76,9.4,21.12,14.09,37.07,14.09s28.23-4.22,36.84-12.67c8.61-8.45,12.91-20.33,12.91-35.65l3.32,51.4c-4.42,11.06-12.16,20.96-23.21,29.73-11.06,8.76-25.51,13.15-43.35,13.15-27.16,0-48.13-8.72-62.89-26.18-14.77-17.45-22.15-42.05-22.15-73.79v-149.47h48.32ZM1022.36,377.15v-245.88h48.09v245.88h-48.09Z"/><path d="M1095.37,377.15v-245.88h48.32v245.88h-48.32ZM1244.6,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.92-9.48-21.6-14.21-38.02-14.21s-27.99,4.18-36.59,12.55c-8.61,8.37-12.91,20.13-12.91,35.29l-4.98-47.38c7.58-14.84,17.49-26.29,29.73-34.35,12.24-8.05,25.78-12.08,40.62-12.08,26.68,0,47.33,8.73,61.94,26.17,14.61,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M1876.22,377.15V32.73h48.32v344.42h-48.32ZM2025.45,377.15v-149c0-17.37-4.46-30.79-13.38-40.27-8.93-9.48-21.6-14.21-38.02-14.21s-27.99,4.11-36.6,12.32c-8.61,8.21-12.91,19.82-12.91,34.82l-4.98-47.38c7.58-14.53,17.49-25.78,29.73-33.75,12.24-7.97,25.78-11.96,40.63-11.96,26.68,0,47.33,8.73,61.94,26.17,14.6,17.45,21.91,42.13,21.91,74.02v149.23h-48.32Z"/><path d="M766.68,174.86v-43.59h-37.19V59.74h-48.32v71.54h-25.35v43.59h25.35v73.66c6.37.48,13.54,1.08,14.56,2.24,3.09,3.54-3.67,4.51-4.89,4.83-3.06.8-6.33,1.46-9.67,2.09v55.51c0,21.01,4.54,37.11,13.62,48.32,9.08,11.22,23.73,16.82,43.94,16.82h27.95v-45.95h-23.21c-4.58,0-8.05-1.66-10.42-4.98-2.37-3.32-3.55-7.89-3.55-13.74v-138.81h37.19Z"/><g><path d="M635.05,327.41c-2.61-3.32-3.91-7.89-3.91-13.74v-43.27c-16.98,7.48-33.17,17.3-48.32,29.06v13.74c0,20.69,5.05,36.72,15.16,48.09,10.1,11.37,24.24,17.06,42.4,17.06h28.43v-45.95h-22.74c-4.73,0-8.41-1.66-11.01-4.98Z"/><path d="M631.14,234.44V32.73h-48.32v172.41c15.2,11.79,31.39,21.73,48.32,29.3Z"/></g><g><path d="M280.35,187.89c8.92,9.48,13.38,22.9,13.38,40.27v5.04c9.82-4.05,19.43-8.72,28.41-14.05,6.27-3.73,12.02-9.77,18.61-13.19-2.69-21.49-9.55-38.84-20.61-52.05-14.61-17.45-35.26-26.17-61.94-26.17-15.32,0-29.3,4.42-41.93,13.27-11.97,8.38-21.78,20.2-29.5,35.38-3.32-8.49-7.62-15.98-12.9-22.47-14.21-17.45-34.27-26.17-60.17-26.17-14.85,0-28.39,4.03-40.62,12.08-9.73,6.4-17.97,14.99-24.75,25.69v-34.22H0v245.88h48.32v-155.63c0-15.16,4.3-26.92,12.91-35.29,8.61-8.37,20.8-12.55,36.6-12.55s27.71,4.74,36.24,14.21c8.53,9.48,12.79,22.9,12.79,40.27v149h48.32v-149.23c0-.6-.02-1.18-.03-1.78l.03.12c0-16.74,4.1-29.69,12.32-38.85,8.21-9.16,19.82-13.74,34.82-13.74,16.42,0,29.1,4.74,38.02,14.21Z"/><path d="M317.93,282.69c-.71-.57-1.65-.86-2.62-.92-5.46-.37-10.45-3.7-15.42-5.99-1.94-.89-4.02-1.83-6.16-2.78v104.16h48.32v-75.41c-7.62-6.02-15.61-12.2-24.12-19.05Z"/></g><path d="M636.48,250.5c-1.24-1.76-14.75-2.13-17.87-2.92-67.37-17.05-124.44-98-147.09-186.47-.04-.16-.07-.33-.1-.5l-7.8-60.62-1.63,1.57c-.62.6-1.01,1.43-1.09,2.32-4.61,51.23-18.65,97.91-38.96,139.69-.19.39-.46.71-.76,1-5.17,5.02-19.63,30.69-25.44,38.35-4.58,6.03-11.37,14.09-16.49,19.8-.44.49-1.02.74-1.62.97-.69.27-1.08,1.07-1.66,1.73-.45.52-.82,1.22-1.23,1.8-6.31,2.37-11.37,9.73-17.02,13.9-13.82,10.21-29.63,17.87-44.7,23.06-4,1.38-23.81,5.02-24.71,6.31-1.9,2.72.43,3.11,1.71,3.79,6.37,3.39,18.33,4.37,25.98,7.13,8.73,3.16,18.01,8.24,25.12,12.31,3.71,2.12,7.43,5.21,11.5,5.56.72.06,1.42.33,1.95.86,26.8,26.82,46.7,42.68,67.58,82.22,19.78,37.46,34.67,91.68,37.59,139.12.14,2.19,2.05,3.89,3.98,3.25,2.26-.75.57-4.19,1.14-10.04,10.11-103.14,62.8-197.62,130.85-229.79,10.95-5.18,25.65-6.21,37.09-9.91.92-.3,5.96-1.2,3.65-4.49Z"/><g><path d="M1559.52,137.33c7.9-.24,11.15,10.1,4.51,14.38-2.06,1.33-4.05,2.74-5.88,4.34-66.31,58.12-62.97,154.37,4.14,210.58.08.06.15.13.23.19,5.82,4.76,2.26,14.18-5.26,13.88-67.87-2.7-143.98-16.65-198.18-54.95-87.56-61.89-30.13-127.25,46.5-158.14,46.75-18.84,102.27-28.71,153.95-30.28Z"/><path d="M1692.71,322.11c-.08.35.23.67.58.61,7.79-1.25,16.11-8.49,24.32-24.05,4.17-7.9,6.81-19.61,7.74-32.51-15.62,12.01-27.66,32.75-32.64,55.95Z"/><path d="M1659.32,239.76c.23-.25.38-.55.71-.59.12-.01.23-.06.31-.15,1.83-1.87,4.32-4.57,5.98-6.58,2.09-2.53,7.35-11.1,9.1-12.54.05-.04.1-.1.13-.16,5.15-9.71,9.16-20.23,11.64-31.53.08-.36-.23-.67-.59-.61-1.09.2-2.2.46-3.34.8-20.19,5.99-28.58,28.98-29.11,54.3,0,.44.52.68.85.39,1.19-1.08,2.38-2.18,3.74-2.69.1-.04.18-.1.24-.18.11-.16.22-.32.34-.45Z"/><path d="M1656.29,269.39c4.59,25.86,16.03,48.79,30.05,52.89.37.11.72-.22.64-.59-2.35-11.21-6.4-22.38-11.29-30.88-5.93-10.3-11.64-15.66-18.56-21.87-.36-.32-.92-.01-.84.46Z"/><path d="M1725.25,243.53c-2.24-28.05-12.42-54.81-32.25-56.29-.32-.02-.58.26-.53.58l.69,4.89s0,.05.01.07c5.64,20.26,17.33,39.31,32.08,50.75Z"/><path d="M1716.79,254.77c-.19-.25-2.28-.3-2.76-.41-10.39-2.41-19.2-13.88-22.69-26.4,0-.02-.01-.05-.01-.07l-1.2-8.58-.25.22c-.1.08-.16.2-.17.33-.71,7.26-2.88,13.86-6.01,19.78-.03.05-.07.1-.12.14-.8.71-3.03,4.35-3.92,5.43-.71.85-1.75,1.99-2.54,2.8-.07.07-.16.1-.25.14-.11.04-.17.15-.26.24-.07.07-.13.17-.19.26-.97.34-1.75,1.38-2.63,1.97-2.13,1.45-4.57,2.53-6.9,3.26-.62.19-3.67.71-3.81.89-.29.39.07.44.26.54.98.48,2.83.62,4.01,1.01,1.35.45,2.78,1.17,3.88,1.74.57.3,1.15.74,1.78.79.11,0,.22.05.3.12,4.13,3.8,7.21,6.04,10.43,11.64,3.05,5.3,5.35,12.98,5.8,19.7.02.31.32.55.61.46.35-.11.09-.59.18-1.42,1.56-14.6,9.69-27.98,20.19-32.54,1.69-.73,3.96-.88,5.72-1.4.14-.04.92-.17.56-.64Z"/><path d="M1728.71,158.13c-6.61,3.37-.05,7.51,1.87,10.76,16.26,27.61,28.9,49.58,33.07,73.65,5.76,5.95,13.24,10.41,21.46,11.81.65.11,3.49.16,3.75.41.48.47-.57.59-.77.64-2.4.52-5.48.67-7.78,1.4-5.79,1.85-11.05,5.15-15.4,9.39-.89,13.93-4.6,29.15-11.89,46.83-7.1,17.21-22.11,28.73-22.23,47.16,36.21-5.51,95.49-31.97,114.49-64.34,43.86-74.71-54.49-129.08-116.55-137.72Z"/></g></g></svg></a>
+        <p>Presale launchpad on Base. Powered by Bankr Bot.</p>
+      </div>
+      <div class="footer-col"><h4>Platform</h4><a href="#projects">Presale</a><a href="#how">How it Works</a><a href="#tokenomics">Tokenomics</a><a href="#">Governance</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="#">Documentation</a><a href="#">Whitepaper</a><a href="#">Audit Report</a><a href="#">Brand Kit</a></div>
+      <div class="footer-col"><h4>Community</h4><a href="#">Twitter / X</a><a href="#">Discord</a><a href="#">Telegram</a><a href="#">GitHub</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Moltlunch. All rights reserved.</span>
+      <div class="footer-socials">
+        <div class="footer-social" title="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+        <div class="footer-social" title="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.36-.698.772-1.362 1.225-1.993a.076.076 0 0 0-.041-.107 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.12-.098.246-.198.373-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg></div>
+        <div class="footer-social" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WALLET MODAL -->
+<div class="modal-overlay" id="walletModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeWalletModal()">&times;</button>
+    <div class="wallet-title">Connect Wallet</div>
+    <div class="wallet-desc">Select a wallet to connect to Moltlunch.</div>
+    <div class="wallet-list">
+      <div class="wallet-option" id="mmOption" onclick="connectMetaMask()">
+        <div class="wallet-icon" style="background:linear-gradient(135deg,#f6851b,#e2761b);border-radius:10px">
+          <svg width="22" height="22" viewBox="0 0 35 33" fill="none"><path d="M32.96 1l-13.14 9.72 2.45-5.73z" fill="#E2761B" stroke="#E2761B" stroke-width=".25"/><path d="M2.66 1l13.02 9.81L13.35 4.99z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M28.23 23.53l-3.5 5.34 7.49 2.06 2.14-7.28z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M1.27 23.65l2.13 7.28 7.47-2.06-3.48-5.34z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M10.47 14.51l-2.09 3.17 7.41.34-.26-7.97z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M25.15 14.51l-5.17-4.58-.17 8.09 7.4-.34z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M10.87 28.87l4.49-2.16-3.88-3.03z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/><path d="M20.29 26.71l4.46 2.16-.61-5.19z" fill="#E4761B" stroke="#E4761B" stroke-width=".25"/></svg>
+        </div>
+        <div>
+          <div class="wallet-option-name">MetaMask</div>
+          <div class="wallet-option-desc" id="mmDesc">Most popular Web3 wallet</div>
+        </div>
+        <div class="wallet-arrow">&rsaquo;</div>
+      </div>
+    </div>
+    <div class="wallet-chain-info">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      Make sure MetaMask is installed and unlocked before connecting.
+    </div>
+  </div>
+</div>
+
+<!-- BUY CONFIRM MODAL -->
+<div class="modal-overlay" id="buyConfirmModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBuyModal()">&times;</button>
+    <div id="buyConfirmContent"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon" id="toastIcon"></div>
+  <div class="toast-text" id="toastText"></div>
+</div>
+
+<script>
+// ─── PROJECT DATA ───
+const projects = [
+  {
+    id: 0, name: "Moltlunch Genesis", ticker: "MOLT", status: "live",
+    desc: "The MOLT token. Hold it to get early access to new launches, vote on what gets listed, and earn from the platform.",
+    raised: 72450, target: 100000, price: 0.004, participants: 1240,
+    tags: ["Infrastructure", "Governance"],
+    color: "#e8e8ed", gradient: "linear-gradient(135deg,#e8e8ed,#8a8a9a)",
+    endTime: Date.now() + 3 * 86400000 + 14 * 3600000, featured: true
+  },
+  {
+    id: 1, name: "NeuralMint", ticker: "NMNT", status: "coming_soon",
+    desc: "Generative NFT creation engine on Moltbook. Train custom models and deploy on-chain art with automatic royalties.",
+    raised: 0, target: 50000, price: 0.0025, participants: 0,
+    tags: ["NFT", "Generative"],
+    color: "#ec4899", gradient: "linear-gradient(135deg,#ec4899,#f43f5e)",
+    endTime: null
+  },
+  {
+    id: 2, name: "SynthOracle", ticker: "SYNTH", status: "coming_soon",
+    desc: "Decentralized oracle network providing real-time price feeds and prediction data for DeFi protocols on Base.",
+    raised: 0, target: 75000, price: 0.006, participants: 0,
+    tags: ["Oracle", "DeFi"],
+    color: "#3b82f6", gradient: "linear-gradient(135deg,#3b82f6,#6366f1)",
+    endTime: null
+  },
+  {
+    id: 3, name: "AgentSwarm", ticker: "SWARM", status: "coming_soon",
+    desc: "Multi-agent coordination protocol on Moltbook. Deploy swarms of specialized bots that collaborate to complete complex tasks.",
+    raised: 0, target: 60000, price: 0.008, participants: 0,
+    tags: ["Automation", "Compute"],
+    color: "#22c55e", gradient: "linear-gradient(135deg,#22c55e,#16a34a)",
+    endTime: null
+  },
+  {
+    id: 4, name: "DataWeave", ticker: "WEAVE", status: "coming_soon",
+    desc: "Privacy-preserving data marketplace. Train models on encrypted datasets without ever exposing raw data. Built on Moltbook.",
+    raised: 0, target: 40000, price: 0.003, participants: 0,
+    tags: ["Privacy", "Data"],
+    color: "#8b5cf6", gradient: "linear-gradient(135deg,#8b5cf6,#a78bfa)",
+    endTime: null
+  },
+  {
+    id: 5, name: "VoxNet", ticker: "VOX", status: "coming_soon",
+    desc: "Voice-powered assistant protocol. Natural language interfaces for DeFi trading, portfolio management, and on-chain analytics.",
+    raised: 0, target: 25000, price: 0.002, participants: 0,
+    tags: ["Voice", "DeFi"],
+    color: "#f59e0b", gradient: "linear-gradient(135deg,#f59e0b,#eab308)",
+    endTime: null
+  },
+  {
+    id: 6, name: "CodePilot", ticker: "CPLT", status: "coming_soon",
+    desc: "On-chain smart contract security analysis tool. Automated vulnerability detection for Base contracts and protocols.",
+    raised: 0, target: 80000, price: 0.005, participants: 0,
+    tags: ["Security", "Audit"],
+    color: "#06b6d4", gradient: "linear-gradient(135deg,#06b6d4,#0891b2)",
+    endTime: null
+  },
+  {
+    id: 7, name: "MemeCraft", ticker: "MEME", status: "coming_soon",
+    desc: "Community-driven meme token engine with viral prediction algorithms and social trading features on Moltbook.",
+    raised: 0, target: 15000, price: 0.001, participants: 0,
+    tags: ["Meme", "Social"],
+    color: "#f43f5e", gradient: "linear-gradient(135deg,#f43f5e,#e11d48)",
+    endTime: null
+  },
+  {
+    id: 8, name: "TradeBot Pro", ticker: "TBOT", status: "coming_soon",
+    desc: "Autonomous trading engine with reinforcement learning. Copy-trade top strategies with transparent on-chain performance history.",
+    raised: 0, target: 100000, price: 0.01, participants: 0,
+    tags: ["Trading", "Bot"],
+    color: "#64748b", gradient: "linear-gradient(135deg,#64748b,#475569)",
+    endTime: null
+  },
+  {
+    id: 9, name: "PixelMind", ticker: "PXMN", status: "coming_soon",
+    desc: "Game asset generation platform. Create characters, environments, and items using text-to-3D models for on-chain gaming.",
+    raised: 0, target: 35000, price: 0.0035, participants: 0,
+    tags: ["Gaming", "Creative"],
+    color: "#a855f7", gradient: "linear-gradient(135deg,#a855f7,#9333ea)",
+    endTime: null
+  }
+];
+
+// ─── STATE ───
+let walletConnected = false;
+let walletAddress = '';
+let currentFilter = 'all';
+
+// ─── AVATAR SVG ───
+function avatarSVG(color, letter) {
+  return `<svg width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="${color}"/><text x="24" y="24" text-anchor="middle" dominant-baseline="central" fill="${color === '#e8e8ed' || color === '#f59e0b' || color === '#22c55e' ? '#000' : '#fff'}" font-size="17" font-weight="700" font-family="JetBrains Mono,monospace">${letter}</text></svg>`;
+}
+
+// ─── FORMAT ───
+function fmtUSD(n) {
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + n.toLocaleString('en-US', {maximumFractionDigits: 0});
+  return '$' + n.toFixed(0);
+}
+
+function fmtCountdown(ms) {
+  if (!ms || ms <= 0) return { d:'00', h:'00', m:'00', s:'00' };
+  return {
+    d: String(Math.floor(ms / 86400000)).padStart(2,'0'),
+    h: String(Math.floor((ms % 86400000) / 3600000)).padStart(2,'0'),
+    m: String(Math.floor((ms % 3600000) / 60000)).padStart(2,'0'),
+    s: String(Math.floor((ms % 60000) / 1000)).padStart(2,'0')
+  };
+}
+
+// ─── RENDER PROJECTS ───
+function renderProjects() {
+  const grid = document.getElementById('projectsGrid');
+  let filtered = projects.filter(p => !p.featured);
+  if (currentFilter !== 'all') filtered = filtered.filter(p => p.status === currentFilter);
+  const searchVal = document.querySelector('.filter-search').value.toLowerCase();
+  if (searchVal) {
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(searchVal) ||
+      p.ticker.toLowerCase().includes(searchVal) ||
+      p.tags.some(t => t.toLowerCase().includes(searchVal))
+    );
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const pct = p.target > 0 ? Math.min(100, (p.raised / p.target) * 100) : 0;
+    const isCS = p.status === 'coming_soon';
+
+    if (isCS) {
+      return `
+      <div class="project-card anim coming-soon" data-status="${p.status}">
+        <div class="card-header" style="position:relative;z-index:1">
+          <div class="card-identity">
+            <div class="card-avatar">${avatarSVG(p.color, p.ticker[0])}</div>
+            <div>
+              <div class="card-name">${p.name}</div>
+              <div class="card-ticker">$${p.ticker}</div>
+            </div>
+          </div>
+          <div class="card-status status-coming-soon">Coming Soon</div>
+        </div>
+        <div style="position:relative">
+          <div class="card-blur-content">
+            <div class="card-desc">${p.desc}</div>
+            <div class="card-progress">
+              <div class="progress-header">
+                <span class="progress-label">$0 / ${fmtUSD(p.target)}</span>
+                <span class="progress-value">0.0%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            </div>
+            <div class="card-metrics">
+              <div class="metric"><div class="m-label">Target</div><div class="m-value">${fmtUSD(p.target)}</div></div>
+              <div class="metric"><div class="m-label">Price</div><div class="m-value">$${p.price}</div></div>
+            </div>
+          </div>
+          <div class="coming-soon-center">
+            <div class="coming-soon-badge">
+              <div class="cs-title">Coming Soon</div>
+              <div class="cs-sub">Presale date will be announced</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer card-footer-cs">
+          <button class="btn-card btn-card-secondary" style="flex:1" onclick="showToast('&#128276;','You will be notified when ${p.name} goes live!')">Notify Me</button>
+        </div>
+      </div>`;
+    }
+
+    const remaining = p.endTime - Date.now();
+    const cd = fmtCountdown(remaining);
+    return `
+    <div class="project-card anim" data-status="${p.status}">
+      <div class="card-header">
+        <div class="card-identity">
+          <div class="card-avatar">${avatarSVG(p.color, p.ticker[0])}</div>
+          <div>
+            <div class="card-name">${p.name}</div>
+            <div class="card-ticker">$${p.ticker}</div>
+          </div>
+        </div>
+        <div class="card-status status-live"><span class="dot"></span> Live</div>
+      </div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-progress">
+        <div class="progress-header">
+          <span class="progress-label">${fmtUSD(p.raised)} / ${fmtUSD(p.target)}</span>
+          <span class="progress-value">${pct.toFixed(1)}%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="countdown" data-end="${p.endTime}">
+        <div class="countdown-item"><div class="countdown-num cd-d">${cd.d}</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-item"><div class="countdown-num cd-h">${cd.h}</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-item"><div class="countdown-num cd-m">${cd.m}</div><div class="countdown-label">Mins</div></div>
+        <div class="countdown-item"><div class="countdown-num cd-s">${cd.s}</div><div class="countdown-label">Secs</div></div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">Price</div><div class="m-value">$${p.price}</div></div>
+        <div class="metric"><div class="m-label">Participants</div><div class="m-value">${p.participants.toLocaleString()}</div></div>
+      </div>
+      <div class="card-footer">
+        <button class="btn-card btn-card-primary" onclick="handleBuy('${p.name}','${p.ticker}')">Contribute</button>
+        <button class="btn-card btn-card-secondary" onclick="viewDetails(${p.id})">Details</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.project-card.anim').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+  });
+}
+
+// ─── FILTER ───
+function filterProjects(status, btn) {
+  currentFilter = status;
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProjects();
+}
+function searchProjects() { renderProjects(); }
+
+// ═══════════════════════════════════
+// ─── REAL METAMASK WALLET CONNECT ──
+// ═══════════════════════════════════
+function openWalletModal() {
+  if (walletConnected) {
+    if (confirm('Disconnect wallet ' + walletAddress.slice(0,6) + '...' + walletAddress.slice(-4) + '?')) {
+      disconnectWallet();
+    }
+    return;
+  }
+  const hasMetaMask = typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask;
+  const mmOption = document.getElementById('mmOption');
+  const mmDesc = document.getElementById('mmDesc');
+  if (!hasMetaMask) {
+    mmDesc.innerHTML = 'Most popular Web3 wallet<div class="wallet-status">Not detected. Please install MetaMask</div>';
+    mmOption.classList.add('disabled');
+  } else {
+    mmDesc.innerHTML = 'Most popular Web3 wallet';
+    mmOption.classList.remove('disabled');
+  }
+  document.getElementById('walletModal').classList.add('active');
+}
+
+function closeWalletModal() {
+  document.getElementById('walletModal').classList.remove('active');
+}
+
+async function connectMetaMask() {
+  if (typeof window.ethereum === 'undefined' || !window.ethereum.isMetaMask) {
+    window.open('https://metamask.io/download/', '_blank');
+    showToast('&#9888;', 'MetaMask not found. Please install it first.');
+    return;
+  }
+  try {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    if (accounts && accounts.length > 0) {
+      walletConnected = true;
+      walletAddress = accounts[0];
+      const short = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
+      const btn = document.getElementById('connectBtn');
+      btn.className = 'btn-connect connected';
+      btn.innerHTML = '<span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%"></span>' + short;
+      document.getElementById('featuredBuyBtn').textContent = 'Buy MOLT';
+      closeWalletModal();
+      showToast('&#9989;', 'Connected: ' + short);
+      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      console.log('Connected to chain:', chainId);
+    }
+  } catch (err) {
+    if (err.code === 4001) {
+      showToast('&#9888;', 'Connection rejected by user');
+    } else {
+      showToast('&#9888;', 'Connection failed: ' + (err.message || 'Unknown error'));
+    }
+    console.error('MetaMask connect error:', err);
+  }
+}
+
+function disconnectWallet() {
+  walletConnected = false;
+  walletAddress = '';
+  const btn = document.getElementById('connectBtn');
+  btn.className = 'btn-connect';
+  btn.innerHTML = 'Connect Wallet';
+  document.getElementById('featuredBuyBtn').textContent = 'Connect Wallet to Buy';
+  showToast('&#128275;', 'Wallet disconnected');
+}
+
+if (typeof window.ethereum !== 'undefined') {
+  window.ethereum.on('accountsChanged', function(accounts) {
+    if (accounts.length === 0) {
+      disconnectWallet();
+    } else if (walletConnected) {
+      walletAddress = accounts[0];
+      const short = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
+      document.getElementById('connectBtn').innerHTML = '<span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%"></span>' + short;
+      showToast('&#128260;', 'Account changed: ' + short);
+    }
+  });
+  window.ethereum.on('chainChanged', function(chainId) {
+    showToast('&#128260;', 'Network changed to chain ' + parseInt(chainId, 16));
+  });
+}
+
+// ─── BUY ───
+function handleBuy(name, ticker) {
+  if (!walletConnected) { openWalletModal(); return; }
+  const project = projects.find(p => p.ticker === ticker);
+  if (!project || project.status !== 'live') { showToast('&#9888;', 'This presale is not active'); return; }
+  const modal = document.getElementById('buyConfirmModal');
+  document.getElementById('buyConfirmContent').innerHTML = `
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="margin:0 auto 16px;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:${project.color};color:#0a0b14;font-weight:900;font-family:JetBrains Mono,monospace">${ticker[0]}</div>
+      <div style="font-family:DM Serif Display,serif;font-size:1.2rem">Contribute to ${name}</div>
+      <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;font-family:JetBrains Mono,monospace">$${ticker} Presale</div>
+    </div>
+    <div class="buy-input-group">
+      <label>Amount (USDC)</label>
+      <div class="buy-input-wrap">
+        <input type="number" class="buy-input" id="modalBuyAmount" placeholder="0.00" oninput="updateModalReceive(${project.price},'${ticker}')">
+        <span class="buy-suffix">USDC</span>
+      </div>
+    </div>
+    <div class="buy-input-group">
+      <label>You Receive</label>
+      <div class="buy-input-wrap">
+        <input type="text" class="buy-input" id="modalReceiveAmount" placeholder="0.00" readonly style="opacity:.6">
+        <span class="buy-suffix">${ticker}</span>
+      </div>
+    </div>
+    <div class="buy-info">
+      <span>Price: 1 ${ticker} = $${project.price}</span>
+      <span>Min: $10</span>
+    </div>
+    <button class="buy-btn" onclick="confirmBuy('${name}','${ticker}',${project.price})">Confirm Purchase</button>
+  `;
+  modal.classList.add('active');
+}
+
+function updateModalReceive(price, ticker) {
+  const amt = parseFloat(document.getElementById('modalBuyAmount').value) || 0;
+  const tokens = amt / price;
+  document.getElementById('modalReceiveAmount').value = tokens > 0 ? tokens.toLocaleString('en-US', {maximumFractionDigits: 0}) : '';
+}
+
+function updateFeaturedReceive() {
+  const amt = parseFloat(document.getElementById('buyAmountFeatured').value) || 0;
+  const tokens = amt / 0.004;
+  document.getElementById('buyReceiveFeatured').value = tokens > 0 ? tokens.toLocaleString('en-US', {maximumFractionDigits: 0}) : '';
+}
+
+function confirmBuy(name, ticker, price) {
+  const amt = parseFloat(document.getElementById('modalBuyAmount').value) || 0;
+  if (amt < 10) { showToast('&#9888;', 'Minimum contribution is $10'); return; }
+  const tokens = Math.floor(amt / price);
+  closeBuyModal();
+  showToast('&#9989;', `Purchased ${tokens.toLocaleString()} ${ticker} for $${amt}`);
+  const project = projects.find(p => p.ticker === ticker);
+  if (project) {
+    project.raised = Math.min(project.target, project.raised + amt);
+    project.participants += 1;
+    renderProjects();
+    if (project.featured) updateFeaturedDisplay();
+  }
+}
+
+function closeBuyModal() { document.getElementById('buyConfirmModal').classList.remove('active'); }
+
+function viewDetails(id) {
+  const p = projects.find(pr => pr.id === id);
+  if (p) showToast('&#128196;', `Details for ${p.name} coming soon!`);
+}
+
+function updateFeaturedDisplay() {
+  const p = projects.find(pr => pr.featured);
+  if (!p) return;
+  const pct = (p.raised / p.target) * 100;
+  document.getElementById('featuredRaised').textContent = `${fmtUSD(p.raised)} / ${fmtUSD(p.target)}`;
+  document.getElementById('featuredBar').style.width = pct + '%';
+}
+
+// ─── TOAST ───
+function showToast(icon, text) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastIcon').innerHTML = icon;
+  document.getElementById('toastText').textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ─── COUNTDOWN ───
+function updateCountdowns() {
+  const fp = projects.find(p => p.featured);
+  if (fp) {
+    const cd = fmtCountdown(fp.endTime - Date.now());
+    document.getElementById('fc-days').textContent = cd.d;
+    document.getElementById('fc-hours').textContent = cd.h;
+    document.getElementById('fc-mins').textContent = cd.m;
+    document.getElementById('fc-secs').textContent = cd.s;
+  }
+  document.querySelectorAll('.countdown[data-end]').forEach(el => {
+    const cd = fmtCountdown(parseInt(el.dataset.end) - Date.now());
+    const d = el.querySelector('.cd-d'), h = el.querySelector('.cd-h'), m = el.querySelector('.cd-m'), s = el.querySelector('.cd-s');
+    if (d) d.textContent = cd.d; if (h) h.textContent = cd.h;
+    if (m) m.textContent = cd.m; if (s) s.textContent = cd.s;
+  });
+}
+
+// ─── SCROLL ANIMS ───
+function initScrollAnimations() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+}
+
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+document.getElementById('walletModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeWalletModal(); });
+document.getElementById('buyConfirmModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeBuyModal(); });
+
+// ─── SIMULATE LIVE DATA ───
+function simulateLiveUpdates() {
+  projects.forEach(p => {
+    if (p.status === 'live' && p.raised < p.target) {
+      if (Math.random() < 0.3) {
+        p.raised = Math.min(p.target, p.raised + Math.random() * 200 + 20);
+        if (Math.random() < 0.5) p.participants += 1;
+      }
+    }
+  });
+  updateFeaturedDisplay();
+  const live = projects.filter(p => p.status === 'live');
+  const totalRaised = live.reduce((s, p) => s + p.raised, 0);
+  const totalPart = live.reduce((s, p) => s + p.participants, 0);
+  document.getElementById('statRaised').textContent = fmtUSD(totalRaised);
+  document.getElementById('statParticipants').textContent = totalPart.toLocaleString();
+  document.getElementById('statProjects').textContent = live.length;
+  document.getElementById('statComingSoon').textContent = projects.filter(p => p.status === 'coming_soon').length;
+}
+
+// ─── INIT ───
+renderProjects();
+initScrollAnimations();
+setInterval(updateCountdowns, 1000);
+setInterval(simulateLiveUpdates, 5000);
+updateCountdowns();
+requestAnimationFrame(() => { document.querySelector('.hero').classList.add('visible'); });
+</script>
+</body>
+</html>

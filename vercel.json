@@ -1,0 +1,7 @@
+﻿{
+  "rewrites": [
+    { "source": "/coming-soon", "destination": "/coming-soon.html" },
+    { "source": "/homepage", "destination": "/clawd-presale.html" },
+    { "source": "/", "destination": "/coming-soon.html" }
+  ]
+}
